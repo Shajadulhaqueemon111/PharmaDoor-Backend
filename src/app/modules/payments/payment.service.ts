@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { join } from 'path';
+import path, { join } from 'path';
 import { readFileSync, existsSync } from 'fs';
 import { veriFyPayment } from './payment.utils';
 import OrderModel from '../Order/order.modle';
@@ -20,7 +20,7 @@ const conformationService = async (transactionId: string, status: string) => {
     message = 'Payment Failed!';
   }
 
-  const filePath = join(__dirname, '../../modules/Views/conformation.html');
+  const filePath = path.join(__dirname, '../Views/conformation.html');
 
   if (!existsSync(filePath)) {
     throw new Error(`File not found at path: ${filePath}`);

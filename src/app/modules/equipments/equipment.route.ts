@@ -14,12 +14,12 @@ router.post(
 );
 router.get(
   '/',
-  authValidateRequest(USER_ROLE.admin, USER_ROLE.pharmacist, USER_ROLE.user),
+  // authValidateRequest(USER_ROLE.admin, USER_ROLE.pharmacist, USER_ROLE.user),
   EquipmentController.getAllEquipment,
 );
 router.get(
   '/:id',
-  authValidateRequest(USER_ROLE.admin, USER_ROLE.pharmacist),
+  // authValidateRequest(USER_ROLE.admin, USER_ROLE.pharmacist, USER_ROLE.user),
   EquipmentController.getSingleEquipment,
 );
 router.delete(

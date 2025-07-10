@@ -13,9 +13,9 @@ export const initiatePayment = async (paymentData: any) => {
     signature_key: process.env.SIGNATURE_KEY,
     tran_id: paymentData.transactionId,
 
-    success_url: `http://localhost:5000/api/v1/payment/conformation?transactionId=${paymentData.transactionId}&status=success`,
-    fail_url: `http://localhost:5000/api/v1/payment/conformation?status=faield`,
-    cancel_url: 'http://localhost:5173/',
+    success_url: `https://pharma-door-backend.vercel.app/api/v1/payment/conformation?transactionId=${paymentData.transactionId}&status=success`,
+    fail_url: `https://pharma-door-backend.vercel.app/api/v1/payment/conformation?status=faield`,
+    cancel_url: 'https://pharma-door-frontend.vercel.app/payment/cancel',
     amount: paymentData.totalPrice,
     currency: 'BDT',
 
