@@ -6,6 +6,9 @@ import { LoginRouetr } from '../modules/auth/auth.route';
 import { ProductRouter } from '../modules/student/student.route';
 import { notificationRouter } from '../modules/notification/notification.route';
 import { MedicineRoute } from '../modules/Allmedicine/medicine.route';
+import { orderRoutes } from '../modules/Order/order.route';
+import { paymentRoutes } from '../modules/payments/payment.router';
+import { EquipmentRoute } from '../modules/equipments/equipment.route';
 
 const router = Router();
 
@@ -37,6 +40,18 @@ const modulesRouter = [
   {
     path: '/medicine',
     route: MedicineRoute,
+  },
+  {
+    path: '/order',
+    route: orderRoutes,
+  },
+  {
+    path: '/payment',
+    route: paymentRoutes,
+  },
+  {
+    path: '/equipment',
+    route: EquipmentRoute,
   },
 ];
 

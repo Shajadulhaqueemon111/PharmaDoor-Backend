@@ -28,17 +28,6 @@ const authValidateRequest = (...requiredRoles: TUserRole[]) => {
 
     const user = await validUserForLogin(email);
     console.log(user);
-    //password change time valid tokon comparizon
-    // if (
-    //   user.passwordChangedAt &&
-    //   iat &&
-    //   iat * 1000 < new Date(user.passwordChangedAt).getTime()
-    // ) {
-    //   throw new AppError(
-    //     401,
-    //     'Password was changed after the token was issued. Please log in again.',
-    //   );
-    // }
 
     if (!user) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'User not found!');

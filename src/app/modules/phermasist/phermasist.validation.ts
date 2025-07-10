@@ -11,16 +11,16 @@ const createPharmacistValidationSchema = z.object({
       storeName: z.string().min(1, { message: 'Store name is required' }),
       postCode: z.string().min(1, { message: 'Post code is required' }),
       nid: z.string().min(1, { message: 'NID number is required' }),
-      nidImage: z.string().url({ message: 'NID image must be a valid URL' }),
-      profileImage: z
-        .string()
-        .url({ message: 'Profile image must be a valid URL' }),
-      drugLicenseImage: z
-        .string()
-        .url({ message: 'Drug license must be a valid URL' }),
-      tradeLicenseImage: z
-        .string()
-        .url({ message: 'Trade license must be a valid URL' }),
+      // nidImage: z.string().url({ message: 'NID image must be a valid URL' }),
+      // profileImage: z
+      //   .string()
+      //   .url({ message: 'Profile image must be a valid URL' }),
+      // drugLicenseImage: z
+      //   .string()
+      //   .url({ message: 'Drug license must be a valid URL' }),
+      // tradeLicenseImage: z
+      //   .string()
+      //   .url({ message: 'Trade license must be a valid URL' }),
     }),
   }),
 });

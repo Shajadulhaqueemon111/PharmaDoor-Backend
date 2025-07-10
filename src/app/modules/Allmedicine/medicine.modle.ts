@@ -6,6 +6,7 @@ const medicineSchema = new mongoose.Schema({
   brand: String,
   price: Number,
   stock: Number,
+  medicineImage: String,
   manufactureDate: Date,
   expiryDate: Date,
 
@@ -30,6 +31,6 @@ const medicineSchema = new mongoose.Schema({
   },
 });
 
-const MedicineModle = model<IMedicine>('medicine', medicineSchema);
+const MedicineModle = model<IMedicine>('Medicine', medicineSchema);
 
 export default MedicineModle;

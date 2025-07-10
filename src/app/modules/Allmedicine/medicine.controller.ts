@@ -7,7 +7,7 @@ import sendResponse from '../utils/sendResponse';
 
 const createMedicine = catchAsync(async (req: Request, res: Response) => {
   const result = await MedicineService.createMedicine(req.body);
-  console.log(result);
+
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
@@ -22,7 +22,31 @@ const getAllMedicines = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Non-expired medicines fetched successfully',
+    message: 'All medicines fetched successfully',
+    data: result,
+  });
+});
+const updateMedicines = catchAsync(async (req: Request, res: Response) => {
+  const { _id } = req.params;
+  const payload = req.body;
+  const result = await MedicineService.updateMedicineIntDB(_id, payload);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'update medicine successfully',
+    data: result,
+  });
+});
+const deleteMedicines = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const result = await MedicineService.deleteMedicineImtoDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'delete medicine successfully',
     data: result,
   });
 });
@@ -44,4 +68,6 @@ export const MedicineController = {
   createMedicine,
   getAllMedicines,
   markExpiredMedicineController,
+  updateMedicines,
+  deleteMedicines,
 };

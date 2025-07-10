@@ -5,6 +5,8 @@ import httpStatus from 'http-status';
 import sendResponse from '../utils/sendResponse';
 import catchAsync from '../utils/catchAsync';
 
+import AppError from '../../error/app.error';
+
 const createUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await UserServices.createUser(req.body);
 
@@ -72,20 +74,41 @@ const createAdmin = catchAsync(async (req, res) => {
   });
 });
 const createPhermasist = catchAsync(async (req, res) => {
-  console.log('Request body:', req.body);
-  const { password, pharmacist: phermasistData } = req.body;
+  const { password, pharmacist } = req.body;
+
+  if (!password || !pharmacist) {
+    throw new AppError(400, 'Password and pharmacist are required');
+  }
+
+  const files = req.files as {
+    [fieldname: string]: Express.Multer.File[];
+  };
+
+  // Validate required files exist
+  if (
+    !files['profileImage']?.length ||
+    !files['drugLicenseImage']?.length ||
+    !files['nidImage']?.length ||
+    !files['tradeLicenseImage']?.length
+  ) {
+    throw new AppError(400, 'All required files must be uploaded');
+  }
+
+  // Pass files directly, no wrapping into single files
   const result = await UserServices.createPhermasistIntoDB(
     password,
-    phermasistData,
+    pharmacist,
+    files,
   );
-  console.log(result);
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Phermasist Created is successfully',
+    message: 'Pharmacist created successfully',
     data: result,
   });
 });
+
 export const UserController = {
   createUsers,
   getAllUser,

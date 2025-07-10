@@ -5,28 +5,39 @@ const createMedicine = async (payload: IMedicine) => {
   const { expiryDate, createdBy } = payload;
   const today = new Date();
 
-  // ⛔ Prevent posting expired medicine
   if (new Date(expiryDate) <= today) {
     throw new Error('Expiry date must be in the future.');
   }
 
-  // ✅ Add createdBy using logged-in pharmacist's _id
   const medicineToCreate = {
     ...payload,
     createdBy,
   };
 
-  // ✅ Create medicine
   const result = await MedicineModle.create(medicineToCreate);
 
   return result;
 };
 
 const getAllNonExpiredMedicines = async () => {
-  const medicines = await MedicineModle.find({ isExpired: false });
+  const medicines = await MedicineModle.find();
   return medicines;
 };
+const updateMedicineIntDB = async (
+  _id: string,
+  payload: Partial<IMedicine>,
+) => {
+  const result = await MedicineModle.findByIdAndUpdate(_id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
 
+const deleteMedicineImtoDB = async (_id: string) => {
+  const result = await MedicineModle.findByIdAndDelete(_id);
+  return result;
+};
 const markExpiredMedicines = async () => {
   const today = new Date();
 
@@ -46,4 +57,6 @@ export const MedicineService = {
   createMedicine,
   getAllNonExpiredMedicines,
   markExpiredMedicines,
+  updateMedicineIntDB,
+  deleteMedicineImtoDB,
 };

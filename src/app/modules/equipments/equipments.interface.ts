@@ -1,19 +1,19 @@
 import { Types } from 'mongoose';
+
 export interface IUserSummary {
   _id: Types.ObjectId;
   name: string;
   email: string;
 }
 
-export interface IMedicine {
-  _id?: Types.ObjectId;
+export interface IEquipments {
   name: string;
   brand: string;
+  category: string;
   price: number;
-  stock: number;
+  stock_quantity: number;
+  rating: number;
+  color: string;
   medicineImage: string;
-  manufactureDate: Date;
-  expiryDate: Date;
   createdBy: IUserSummary;
-  isExpired?: boolean;
 }
