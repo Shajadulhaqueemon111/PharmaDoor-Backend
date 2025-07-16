@@ -9,4 +9,3 @@ export const modelMapper: Record<string, any> = {
   equipment: EquipmentModel,
   // future a add korte paren: diagnostic: DiagnosticModel, surgical: SurgicalModel
 };
-console.log('Medicine Model:', MedicineModle);

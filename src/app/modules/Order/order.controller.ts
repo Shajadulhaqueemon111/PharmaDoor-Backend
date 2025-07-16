@@ -48,3 +48,30 @@ export const getSingleOredrMedicines = catchAsync(
     });
   },
 );
+
+export const updateOrderStatus = catchAsync(async (req, res) => {
+  const { _id } = req.params;
+
+  const payload = req.body;
+
+  const result = await orderService.UpdateOrederMedicineIntodb(_id, payload);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'order status successfully',
+    data: result,
+  });
+});
+export const deleteOrder = catchAsync(async (req, res) => {
+  const { id } = req.params;
+
+  const result = await orderService.deleteOrderIntoDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'order status successfully',
+    data: result,
+  });
+});

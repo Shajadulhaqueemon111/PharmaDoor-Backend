@@ -15,7 +15,7 @@ const createOrder = async (orderData: any) => {
     products.map(async (item: any) => {
       console.log('item data:', item);
 
-      const Model = modelMapper[item.model]; // get correct model
+      const Model = modelMapper[item.model];
 
       if (!Model) throw new Error(`Unknown product model: ${item.model}`);
 
@@ -71,8 +71,26 @@ const getSingleOrederMedicineIntodb = async (_id: string) => {
   const result = await orderModle.findById(_id);
   return result;
 };
+const UpdateOrederMedicineIntodb = async (
+  _id: string,
+  payload: Partial<typeof orderModle>,
+) => {
+  const result = await orderModle.findByIdAndUpdate(_id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
+const deleteOrderIntoDB = async (_id: string) => {
+  const result = await orderModle.findByIdAndDelete(_id);
+
+  return result;
+};
 export const orderService = {
   createOrder,
   getOrederMedicineIntodb,
   getSingleOrederMedicineIntodb,
+  UpdateOrederMedicineIntodb,
+  deleteOrderIntoDB,
 };

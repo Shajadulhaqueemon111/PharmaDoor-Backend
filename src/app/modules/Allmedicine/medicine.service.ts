@@ -23,6 +23,12 @@ const getAllNonExpiredMedicines = async () => {
   const medicines = await MedicineModle.find();
   return medicines;
 };
+
+const getSingleMedicineIntoDB = async (_id: string) => {
+  const result = await MedicineModle.findById(_id);
+
+  return result;
+};
 const updateMedicineIntDB = async (
   _id: string,
   payload: Partial<IMedicine>,
@@ -59,4 +65,5 @@ export const MedicineService = {
   markExpiredMedicines,
   updateMedicineIntDB,
   deleteMedicineImtoDB,
+  getSingleMedicineIntoDB,
 };
