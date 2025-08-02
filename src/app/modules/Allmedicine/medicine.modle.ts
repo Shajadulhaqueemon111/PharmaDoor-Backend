@@ -6,6 +6,7 @@ const medicineSchema = new mongoose.Schema({
   brand: String,
   price: Number,
   stock: Number,
+  medicineType: String,
   medicineImage: String,
   manufactureDate: Date,
   expiryDate: Date,

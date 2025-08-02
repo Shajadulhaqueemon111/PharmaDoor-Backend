@@ -11,6 +11,7 @@ export const createMedicineValidationSchema = z.object({
     .number({ invalid_type_error: 'Stock must be a number' })
     .int()
     .nonnegative('Stock must be non-negative'),
+  medicineType: z.string().min(1, 'medicine type is required'),
   medicineImage: z.string().url('Valid image URL is required'),
   manufactureDate: z.coerce.date({
     invalid_type_error: 'Invalid manufacture date',

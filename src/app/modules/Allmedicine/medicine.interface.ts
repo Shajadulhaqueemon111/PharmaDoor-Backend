@@ -11,6 +11,7 @@ export interface IMedicine {
   brand: string;
   price: number;
   stock: number;
+  medicineType: string;
   medicineImage: string;
   manufactureDate: Date;
   expiryDate: Date;
