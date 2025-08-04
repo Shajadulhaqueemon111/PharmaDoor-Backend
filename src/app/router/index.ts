@@ -10,6 +10,7 @@ import { orderRoutes } from '../modules/Order/order.route';
 import { paymentRoutes } from '../modules/payments/payment.router';
 import { EquipmentRoute } from '../modules/equipments/equipment.route';
 import { OfferRoute } from '../modules/specialoffer/offer.route';
+import { BlogRoute } from '../modules/blogsection/blog.route';
 
 const router = Router();
 
@@ -57,6 +58,10 @@ const modulesRouter = [
   {
     path: '/offer',
     route: OfferRoute,
+  },
+  {
+    path: '/blog',
+    route: BlogRoute,
   },
 ];
 

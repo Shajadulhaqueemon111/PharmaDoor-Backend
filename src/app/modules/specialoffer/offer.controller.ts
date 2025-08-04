@@ -12,16 +12,13 @@ const createOffer = catchAsync(async (req, res) => {
     throw new AppError(httpStatus.BAD_REQUEST, 'No image provided');
   }
 
-  // Upload image to Cloudinary
   const cloudinaryResult = await sendImageToCloudinary(
     file.path,
     file.filename,
   );
 
-  // Add image URL to payload
   payload.medicineImage = cloudinaryResult.secure_url;
 
-  // Save to DB
   const result = await OfferService.createOfferIntoDB(payload);
 
   sendResponse(res, {
