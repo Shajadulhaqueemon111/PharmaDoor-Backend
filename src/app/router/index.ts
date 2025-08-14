@@ -11,6 +11,7 @@ import { paymentRoutes } from '../modules/payments/payment.router';
 import { EquipmentRoute } from '../modules/equipments/equipment.route';
 import { OfferRoute } from '../modules/specialoffer/offer.route';
 import { BlogRoute } from '../modules/blogsection/blog.route';
+import { AnimalMedicineRoute } from '../modules/animalmedicine/animalmed.route';
 
 const router = Router();
 
@@ -62,6 +63,10 @@ const modulesRouter = [
   {
     path: '/blog',
     route: BlogRoute,
+  },
+  {
+    path: '/animal-medicine',
+    route: AnimalMedicineRoute,
   },
 ];
 
