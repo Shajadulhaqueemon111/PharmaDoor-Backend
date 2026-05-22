@@ -28,8 +28,8 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(globalErrorHandler);
 
-//not error handeller
-app.use(notFound);
 //check expire medicine
 checkExpiredMedicines();
+//not error handeller
+app.use(notFound);
 export default app;
